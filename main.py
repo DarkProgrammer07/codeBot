@@ -1,4 +1,5 @@
 from discord.ext import commands
+import os
 
 client = commands.Bot(command_prefix='&')
 cogList = ['messageListener', 'basicCommands', 'economyControl', 'ownerAccess', 'chess']
@@ -14,4 +15,4 @@ if __name__ == '__main__':
     for _ in cogList:
         client.load_extension('cogs.' + _)
 
-    client.run(token)
+    client.run(os.environ['TOKEN'])
