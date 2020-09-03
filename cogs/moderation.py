@@ -19,7 +19,7 @@ class Moderation(commands.Cog):
             return
         
         _orig = await ctx.message.channel.fetch_message(int(msgID))
-        await (_orig.edit(content=msgContent))
+        await _orig.edit(content=msgContent)
 
 def setup(client):
     client.add_cog(Moderation(client))
