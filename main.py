@@ -19,5 +19,4 @@ if __name__ == '__main__':
     for _ in cogList:
         client.load_extension('cogs.' + _)
 
-    #client.run(os.environ['TOKEN'])
-    client.run('NzQ3NjM1OTgwMzYxNzkzNTg3.X0RwRA.G76N6xDvP10yOdBiheJv9NxIYWo')
+    client.run(os.environ['TOKEN'])
