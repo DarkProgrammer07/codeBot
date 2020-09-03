@@ -7,7 +7,7 @@ class Moderation(commands.Cog):
 
     @commands.command()
     async def sendMessage(self, ctx, *, msg):
-        if json.loads(open('config.json').read())['accessRoleID'] not in ctx.author.roles:
+        if int(json.loads(open('config.json').read())['accessRoleID']) not in ctx.author.roles:
             return
     
         await ctx.message.channel.send(msg)
@@ -15,7 +15,7 @@ class Moderation(commands.Cog):
     
     @commands.command()
     async def editMessage(self, ctx, msgID, msgContent):
-        if json.loads(open('config.json').read())['accessRoleID'] not in ctx.author.roles:
+        if int(json.loads(open('config.json').read())['accessRoleID']) not in ctx.author.roles:
             return
         
         await ctx.message.channel.fetch_message(int(msgID)).edit(content=msgContent)
