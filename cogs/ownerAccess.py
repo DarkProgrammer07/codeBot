@@ -8,6 +8,12 @@ class OwnerAccess(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
+    async def showEvent(self, ctx):
+
+        await ctx.channel.send('economy: initdb, addMoney, subMoney')
+
+    @commands.command()
+    @commands.is_owner()
     async def callEvent(self, ctx, eventName, *, args):
         self.client.dispatch(eventName, args)
 

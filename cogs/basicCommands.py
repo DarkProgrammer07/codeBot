@@ -6,7 +6,7 @@ class BasicCommands(commands.Cog):
     
     @commands.command()
     async def ping(self, ctx):
-        await ctx.send(f'🤖 beep boop!, **{str(self.client.latency)}**  s')
+        await ctx.send(f'🤖 beep boop!, **{str(self.client.latency)[2:5]}ms**')
 
 def setup(client):
     client.add_cog(BasicCommands(client))

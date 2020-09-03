@@ -1,4 +1,5 @@
 from discord.ext import commands
+import json
 
 class MessageListener(commands.Cog):
     def __init__(self, client):
@@ -6,10 +7,16 @@ class MessageListener(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if message.channel.id == 739538674349506642:
+
+        print(message.author.name + ': ', message.content)
+        if message.embeds:
+            for _ in message.embeds:
+                print(_.to_dict())
+
+        if message.channel.id == json.loads(open('config.json').read())['verifyChannelID']:
             if message.content.lower() == '&verify':
                 await message.author.add_roles(message.guild.get_role(739346618821771286), reason='verified')
-                await message.author.guild.get_channel(747314521101697034).send(f'{message.author.mention}, **whalecum to `Code Cave` 🐳💦**')
+                await message.author.guild.get_channel(json.loads(open('config.json').read())['welcomeChannelID']).send(f'{message.author.mention}, **whalecum to `Code Cave` 🐳💦**')
                 await message.delete()
             else:
                 await message.delete()
