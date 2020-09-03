@@ -18,7 +18,8 @@ class Moderation(commands.Cog):
         if int(json.loads(open('config.json').read())['accessRoleID']) not in [_.id for _ in ctx.author.roles]:
             return
         
-        await ctx.message.channel.fetch_message(int(msgID)).edit(content=msgContent)
+        _orig = await ctx.message.channel.fetch_message(int(msgID))
+        await (_orig.edit(content=msgContent))
 
 def setup(client):
     client.add_cog(Moderation(client))
